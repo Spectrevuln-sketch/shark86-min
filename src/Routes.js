@@ -1,27 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { MainPage, LoginPage, RegisterPage } from './page';
 import AuthAdmin from './context/AuthAdmin';
 const Routes = () => {
-    const { loggedIn } = useContext(AuthAdmin);
+    const { loggedIn, getLoggedIn } = useContext(AuthAdmin);
+    useEffect(() => {
+        getLoggedIn();
 
-    console.log(loggedIn)
+    }, [])
+
     return (
         <Router>
 
-            {loggedIn === false && (
 
-                <>
-                    <Switch>
-                        <Route path="/register">
-                            <RegisterPage />
-                        </Route>
-                        <Route path="/login">
-                            <LoginPage />
-                        </Route>
-                    </Switch>
-                </>
-            )}
+            <>
+                <Switch>
+                    <Route path="/register">
+                        <RegisterPage />
+                    </Route>
+                    <Route path="/login">
+                        <LoginPage />
+                    </Route>
+                </Switch>
+            </>
             {loggedIn === true && (
 
                 <>
@@ -48,7 +49,7 @@ const Routes = () => {
                     </Switch>
                 </>
             )}
-            <Redirect from='*' to={loggedIn ? '/dashboard' : '/login'} />
+            <Redirect from='*' to={loggedIn === true ? '/dashboard' : '/login'} />
         </Router>
     )
 }
