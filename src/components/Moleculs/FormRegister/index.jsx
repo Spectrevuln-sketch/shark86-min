@@ -40,7 +40,7 @@ const FormRegister = ({ title, ImgSrc }) => {
                     draggable: true,
                     progress: undefined,
                 })
-                history.push('/')
+                history.push('/login')
             }
             if (CreateAdmin.status === 200) {
                 await toast(`🍺 ${CreateAdmin.data.message}`, {
@@ -52,7 +52,7 @@ const FormRegister = ({ title, ImgSrc }) => {
                     draggable: true,
                     progress: undefined,
                 })
-                history.push('/')
+                history.push('/login')
             }
         } catch (err) {
             if (err.response) {
