@@ -55,8 +55,6 @@ const TugasData = ({ tab }) => {
   })
   useEffect(() => {
     FindAllTask();
-
-
   }, []);
 
   console.log(defaultColor)
@@ -269,7 +267,8 @@ const TugasData = ({ tab }) => {
 
   /**Handle Redirect */
   const HandleRedirect = async () => {
-    if (vipData.data.length > 0 && AllTugas.length > 0) {
+    if (vipData.data.length > 0) {
+      console.log(AllTugas)
       await history.push('/create_tugas');
     } else {
       window.location.reload(false);

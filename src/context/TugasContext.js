@@ -13,8 +13,9 @@ function TugasContextProvider(props) {
         GetAllTugas()
     }, []);
     async function GetAllTugas() {
-        const GetTugas = await api.get('/daftar-tugas')
-        setAllTugas(GetTugas.data);
+        let DataTugas = await api.get('/daftar-tugas')
+        console.log(DataTugas.data)
+        setAllTugas(DataTugas.data)
     }
 
     return (

@@ -37,7 +37,7 @@ const FormLogin = ({ title, ImgSrc, hidden }) => {
                 })
                 await getLoggedIn();
                 console.log(getLoggedIn())
-                // history.push('/dashboard')
+                await history.push('/dashboard')
             }
 
         } catch (err) {
